@@ -11,7 +11,7 @@ void insert(int arr[], int *size) {
 
     printf("\nEnter the element to be inserted: ");
     scanf("%d", &n);
-    printf("\nEnter the position (1-%d): ", *size + 1);
+    printf("\nEnter the position (1-%d) : ", (*size + 1));
     scanf("%d", &pos);
 
     if (pos < 1 || pos > *size + 1) {
@@ -27,7 +27,7 @@ void insert(int arr[], int *size) {
     printf("\nElement inserted successfully");
 }
 
-void delete_element(int arr[], int *size) {
+void delete(int arr[], int *size) {
     int pos;
 
     if (*size == 0) {
@@ -48,4 +48,40 @@ void delete_element(int arr[], int *size) {
     }
     (*size)--;
     printf("\nElement deleted successfully");
+}
+
+void display(int arr[], int *size){
+    printf("\n--Array--\n");
+    for (int i = 0; i <= *size; i++) {
+        printf("%d ", arr[i]);
+    }
+}
+
+int main(){
+    int arr[MAX], ch, size = 0, loop = 'y';
+    while(1){
+    printf("\n---- Array Operations ----\n");
+    printf("\n-Operations-\n");
+    printf("1. Insert\n2. Delete\n3. Display\n4. Exit");
+    printf("\nSelect an operation : ");
+    scanf("%d",&ch);
+
+    switch(ch){
+        case 1:
+            insert(arr, &size);
+            break;
+        case 2:
+            delete(arr, &size);
+            break;
+        case 3:
+            display(arr, &size);
+            break;
+        case 4:
+            return 0;
+        default:
+            printf("-Invalid option chosen! Try again-");
+            break;
+    }
+    }
+return 0;
 }
