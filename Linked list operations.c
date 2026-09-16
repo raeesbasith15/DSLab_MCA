@@ -4,8 +4,9 @@ struct Node {
     struct Node *next;
 }
 struct Node *head = NULL;
+struct Node *temp = NULL;
+struct Node *newNode = NULL;
 void insertb(){
-    struct Node *newNode; 
     int val; 
   
     newNode = malloc(sizeof(struct Node));
@@ -20,10 +21,8 @@ void insertb(){
 } 
 
 insertend() {
-    struct Node *newNode;
     int val;
 
-    temp = head;
     newNode = malloc(sizeof(struct Node));
     
     printf("Enter the value : "); 
@@ -72,3 +71,51 @@ void display() {
     printf("NULL");
 }
 
+void deleteb() {
+    temp = head;
+    head = head -> next;
+    printf("\nNode removed is : %d", temp -> data)
+    free(temp);
+}
+
+void deleteend() {
+    int node;
+    temp = head;
+    while (temp -> next -> next != NULL) {
+        temp = temp -> next;
+    }
+    node = temp -> next;
+    temp -> next = NULL;
+    printf("\nElement removed is : ", node); 
+    free(node);
+      
+}
+
+void deleteb() {
+    temp = head;
+    head = temp -> next;
+    
+    temp -> next = NULL;
+    free(temp);
+} 
+
+void deletep() {
+    int pos, node;
+
+    if(pos == 1) {
+        deleteb();
+    }
+    
+    temp = head;
+    printf("\nEnter the position to delete : ");
+    scanf("%d", &pos);
+    
+    for (int i = 1; i < pos - 1; i++) {
+        temp = temp -> next;
+    }
+    node = temp -> next;
+    temp -> next = node;
+    node -> next = NULL;
+    
+    free(node);
+}
