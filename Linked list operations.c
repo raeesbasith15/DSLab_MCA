@@ -52,6 +52,10 @@ void insertp(){
         insertb();
         return;
     }
+    if (pos < 1 && head == NULL) {
+        printf("Invalid position!!");
+        return;
+    }
     
     temp = head;
     newNode = (struct Node *)malloc(sizeof(struct Node));
@@ -62,8 +66,12 @@ void insertp(){
     newNode -> data = val;
     newNode -> next = NULL;
 
-    for (int i = 1; i < pos - 1; i++) {
+    for (int i = 1; i < pos - 1 && temp != NULL; i++) {
         temp = temp->next;
+    }
+    if (temp == NULL){
+        printf("Invalid position!!");
+        return;
     }
     newNode -> next = temp -> next;
     temp -> next = newNode;
