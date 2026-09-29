@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
 struct Node {
     int data;
     struct Node *next;
@@ -8,7 +7,7 @@ struct Node {
 struct Node *newNode;
 struct Node *top = NULL;
 
-void push(int val) {
+void push(int *val) {
     newNode = (struct Node *)malloc(sizeof(struct Node));
     newNode -> data = *val;
     newNode -> next = top;
